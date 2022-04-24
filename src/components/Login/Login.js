@@ -35,6 +35,7 @@ const Login = ({ setLoginUser }) => {
     if (Object.keys(formErrors).length === 0 && isSubmit) {
       console.log(user);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [formErrors]);
 
   const validate = (values) => {

@@ -42,6 +42,7 @@ const Signup = () => {
     if (Object.keys(formErrors).length === 0 && isSubmit) {
       console.log(data);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [formErrors]);
 
   const validate = (values) => {
