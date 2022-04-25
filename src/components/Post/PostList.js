@@ -27,14 +27,6 @@ const PostList = () => {
           <Link to="/addpost">추가</Link>
         </button>
       </div>
-      {/* {setPostList &&
-        setPostList.map((data) => {
-          return (
-            <div>
-              <h1>{data.name}</h1>
-            </div>
-          );
-        })} */}
       <ListGroup className="mt-4">
         {postList &&
           postList.map((data) => {

@@ -10,8 +10,6 @@ const AddPost = () => {
     description: "",
   });
 
-  const [postList, setPostList] = useState([]);
-
   const [isSubmit, setIsSubmit] = useState(false);
 
   const history = useHistory();
@@ -34,19 +32,6 @@ const AddPost = () => {
       alert("에러");
     }
   };
-
-  useEffect(() => {
-    const fetchEvent = async () => {
-      try {
-        const res = await axios.get("http://localhost:3000/api/posts");
-
-        setPostList(res.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchEvent();
-  }, []);
 
   return (
     <div className="form-container">
