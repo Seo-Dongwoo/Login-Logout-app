@@ -1,9 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../css/PostList.css";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import { ListGroup, ListGroupItem, Button } from "reactstrap";
 
-const PostList = ({ postList }) => {
+const PostList = () => {
+  const [postList, setPostList] = useState([]);
+
+  useEffect(() => {
+    const fetchEvent = async () => {
+      try {
+        const res = await axios.get("http://localhost:3000/api/posts");
+        setPostList(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchEvent();
+  }, []);
+
   return (
     <div className="ListContainer">
       <div className="ListHeader">
