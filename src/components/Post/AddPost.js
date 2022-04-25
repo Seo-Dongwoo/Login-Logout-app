@@ -39,6 +39,7 @@ const AddPost = () => {
     const fetchEvent = async () => {
       try {
         const res = await axios.get("http://localhost:3000/api/posts");
+
         setPostList(res.data);
       } catch (error) {
         console.log(error);
@@ -47,7 +48,6 @@ const AddPost = () => {
     fetchEvent();
   }, []);
 
-  console.log(postList);
   return (
     <div className="form-container">
       <form className="form">
