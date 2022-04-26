@@ -36,10 +36,15 @@ const PostList = () => {
                 style={{ justifyContent: "space-between" }}
               >
                 <strong style={{ paddingTop: "6px" }}>{data.name}</strong>
+                <strong style={{ paddingTop: "6px" }}>{data.title}</strong>
+                <strong style={{ paddingTop: "6px" }}>
+                  {data.description}
+                </strong>
                 <div className="ml-auto">
                   <Link
                     className="btn btn-warning "
                     style={{ marginRight: "5px" }}
+                    to="/updatepost"
                   >
                     변경
                   </Link>

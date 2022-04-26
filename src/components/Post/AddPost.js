@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "../css/AddPost.css";
 import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
@@ -27,6 +27,7 @@ const AddPost = () => {
     if (name && title && description) {
       await axios.post("http://localhost:3000/api/posts", data).then((res) => {
         history.push("/");
+        console.log(data);
       });
     } else {
       alert("에러");
