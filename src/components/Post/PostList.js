@@ -19,6 +19,8 @@ const PostList = () => {
     fetchEvent();
   }, []);
 
+  useEffect(() => {});
+
   return (
     <div className="ListContainer">
       <div className="ListHeader">
@@ -34,6 +36,7 @@ const PostList = () => {
               <ListGroupItem
                 className="d-flex"
                 style={{ justifyContent: "space-between" }}
+                key={data._id}
               >
                 <strong style={{ paddingTop: "6px" }}>{data.name}</strong>
                 <strong style={{ paddingTop: "6px" }}>{data.title}</strong>
