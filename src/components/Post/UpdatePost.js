@@ -22,9 +22,17 @@ const UpdatePost = () => {
   const handleSubmit = async (e, _id) => {
     e.preventDefault();
     setIsSubmit(true);
-    await axios.patch(`http://localhost:3000/api/posts/${_id}`, data);
-    console.log(data);
-    history.push("/");
+    try {
+      const res = await axios.put(
+        `http://localhost:3000/api/posts/${_id}`,
+        data
+      );
+      console.log(res);
+
+      history.push("/");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

@@ -1,25 +1,34 @@
 import React, { useEffect, useState } from "react";
 import "../css/PostList.css";
 import axios from "axios";
+import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.css";
 import { ListGroup, ListGroupItem, Button } from "reactstrap";
 
 const PostList = () => {
   const [postList, setPostList] = useState([]);
 
   useEffect(() => {
-    const fetchEvent = async () => {
-      try {
-        const res = await axios.get("http://localhost:3000/api/posts");
-        setPostList(res.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchEvent();
+    getPosts();
   }, []);
 
-  useEffect(() => {});
+  const getPosts = async () => {
+    const response = await axios.get("http://localhost:3000/api/posts");
+    if (response.status === 200) {
+      setPostList(response.data);
+    }
+  };
+
+  const deletePosts = async (_id) => {
+    if (window.confirm("게시물을 지우겠습니까?")) {
+      const response = await axios.delete(`http://localhost:3000/posts/${_id}`);
+      if (response.status === 200) {
+        toast.success(response.data);
+        getPosts();
+      }
+    }
+  };
 
   return (
     <div className="ListContainer">
@@ -51,7 +60,9 @@ const PostList = () => {
                   >
                     변경
                   </Link>
-                  <Button color="danger">삭제</Button>
+                  <Button onClick={deletePosts} color="danger">
+                    삭제
+                  </Button>
                 </div>
               </ListGroupItem>
             );
