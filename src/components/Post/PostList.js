@@ -22,7 +22,10 @@ const PostList = () => {
 
   const deletePosts = async (_id) => {
     if (window.confirm("게시물을 지우겠습니까?")) {
-      const response = await axios.delete(`http://localhost:3000/posts/${_id}`);
+      const response = await axios.delete(
+        `http://localhost:3000/api/posts/${_id}`
+      );
+      console.log(response);
       if (response.status === 200) {
         toast.success(response.data);
         getPosts();
